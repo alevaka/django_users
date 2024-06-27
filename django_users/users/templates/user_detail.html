@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .user-list-btn {
+            display: inline-block;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .user-list-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Profile</h2>
+            <p><label>First Name: </label>{{ user.first_name }}</p>
+            <p><label>Last Name: </label>{{ user.last_name }}</p>
+            <p><label>Username: </label>{{ user.username }}</p>
+        <a href="{% url 'users:user_list' %}" class="user-list-btn">User list</a>
+    </div>
+</body>
+</html>

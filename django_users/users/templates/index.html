@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load custom_tags %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список страниц приложения users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список страниц приложения users</h1>
+    <ul>
+        <li>
+            <a href="{% url 'users:user_list' %}">User List View</a>
+            <p>Отображает страницу со списком пользователей.</p>
+        </li>
+        <li>
+            {% if request.user.pk %}
+                <a href="{% url 'users:user_detail' pk=request.user.pk %}">User Detail View</a>
+            {% else %}
+                {% get_user_url as user_id %}
+                {% if user_id %}
+                    <a href="{% url 'users:user_detail' pk=user_id %}">User Detail View</a>
+                {% else %}
+                    <a>User Detail View (нет пользователей)</a>
+                {% endif %}
+            {% endif %}
+            <p>Отображает страницу профиля пользователя.</p>
+        </li>
+        <li>
+            <a href="{% url 'users:profile' %}">Profile View</a>
+            <p>Отображает профиль авторизованного пользователя.</p>
+        </li>
+        <li>
+            <a href="{% url 'login' %}">Login View</a>
+            <p>Обрабатывает форму входа пользователя.</p>
+        </li>
+        <li>
+            <a href="{% url 'logout' %}">Logout View</a>
+            <p>Завершает сеанс пользователя.</p>
+        </li>
+        <li>
+            <a href="{% url 'users:signup' %}">Register View</a>
+            <p>Обрабатывает форму регистрации нового пользователя.</p>
+        </li>
+        <li>
+            <a href="{% url 'password_change' %}">Password Change View</a>
+            <p>Обрабатывает форму изменения пароля пользователя.</p>
+        </li>
+        <li>
+            <a href="{% url 'password_reset' %}">Password Reset View</a>
+            <p>Обрабатывает форму запроса на сброс пароля.</p>
+        </li>
+    </ul>
+</body>
+</html>
