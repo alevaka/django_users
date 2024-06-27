@@ -32,7 +32,7 @@ class User(AbstractUser):
         blank=True,
     )
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["username", "is_active"]
 
     def __str__(self):
         return self.email
